@@ -1,19 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Problem } from './app/views/Problem.js'
+import { Answers } from './app/views/Choices.js'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello World </Text>
-    </View>
+      <Problem />
+//      <Choices />
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+};
