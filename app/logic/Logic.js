@@ -3,7 +3,7 @@ import { problems, answers } from '../datasets/Data.js'
 
 var unknown = problems
 var learning = []
-var known = problems
+var known = []
 
 var questions =[];
 var choices = [];
@@ -16,10 +16,10 @@ if(unknown.length==0&&learning.length==0){
 
 //For each trial - present 4 known (or present all known if <4)...
 else {
-    questions=shuffleArray(known).slice(0,4);
+    questions=shuffleArray(known).slice(0,5);
 
    //... then 1 learning, if present
-    if(learning){questions.push(learning[0])}
+    if(learning.length){questions.push(learning[0])}
 
     //then if there are any questions at this point, make answer choices for them
     if (questions){
@@ -45,9 +45,6 @@ else {
 
 }
 
-//if fewer than 4 in known, present all there are, then 1 learning, then distractor
-
-
 
 //points - 1 point for each correct answer (e.g., coins)
 //1 special point (e.g., bucks) for correct answer if learning
@@ -56,6 +53,8 @@ else {
 //distractor, represent as learning. if fail on represent, repeat error correction; 
 //if succeed, keep in learning, provide coin (not buck) and continue with trial. 
 //If it was a known, we should not provide a buck the next time it is moved to known.
+
+
 
 export { questions, choices }
 
@@ -69,11 +68,12 @@ function shuffleArray(array) {
 
 function choiceMaker(correctAnswer){
     var choiceSet = [correctAnswer];
-    var possibleChoices=shuffleArray(answers).slice(0, 5)
-        for(var i=0; i<=3; i++){
+    var possibleChoices=shuffleArray(answers).slice(0, 4)
+        for(var i=0; i<3; i++){
             var incorrectChoice;
             if(possibleChoices[i]!==correctAnswer){incorrectChoice=possibleChoices[i]}
             else incorrectChoice=possibleChoices[3]
+            choiceSet.push(incorrectChoice);
         }
-    return choiceSet;
+    return shuffleArray(choiceSet);
 }

@@ -6,7 +6,9 @@ export class Choices extends React.Component {
     render(){
         return (
         <View>
-            <Text>{ choices }</Text>
+            <ol>
+      {choices.map(d => <li>{d}</li>)}
+    </ol>
             <Text>I am words</Text>
             <Text>More words</Text>
         </View>
