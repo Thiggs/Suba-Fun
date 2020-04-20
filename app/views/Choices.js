@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { choicesData } from '../logic/Logic.js';
 
-export class Answers extends React.Component {
+export class Choices extends React.Component {
     render(){
         return (
         <View>
-            <Text>This is where the answer choices will go.</Text>
+            <Text>{ choicesData }</Text>
             <Text>I am words</Text>
             <Text>More words</Text>
         </View>

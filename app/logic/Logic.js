@@ -1,3 +1,10 @@
+import React from 'react';
+import { data } from '../datasets/Data.js'
+
+var unknown = data
+var learning = []
+var known = []
+
 //repeat trials of 5 until game is won
 
 //For each trial - present 4 known, 1 learning
@@ -15,3 +22,9 @@
 //distractor, represent as learning. if fail on represent, repeat error correction; 
 //if succeed, keep in learning, provide coin (not buck) and continue with trial. 
 //If it was a known, we should not provide a buck the next time it is moved to known.
+
+var problemData = data[0]
+var choicesData = [data[0], data[1], data[2], data[3]]
+
+export { problemData, choicesData }
+
