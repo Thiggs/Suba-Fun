@@ -6,9 +6,7 @@ export class Problem extends React.Component {
     render(){
         return (
         <View>
-            <ol>
-      {questions.map(d => <li>{d}</li>)}
-    </ol>
+            <Text>{questions}</Text>
             <Text>I am words</Text>
             <Text>More words</Text>
         </View>
