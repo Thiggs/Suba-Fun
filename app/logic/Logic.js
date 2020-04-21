@@ -1,5 +1,8 @@
 import React from 'react';
-import { problems, answers } from '../datasets/Data.js'
+import { data } from '../datasets/Data.js'
+
+let problems = data.map(value => value.problem);
+let answers = data.map(value => value.answer);
 
 var unknown = problems
 var learning = []
