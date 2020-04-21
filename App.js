@@ -17,8 +17,12 @@ export default class App extends React.Component {
   render(){
     return (
       <View style={styles.container}>
+      <View style={styles.rows}>
         <Problem />
+        </View>
+        <View style={styles.rows}>
         <Choices />
+      </View>
       </View>
     );
   }
@@ -29,6 +33,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    flexDirection:'column',
+  },
+  rows: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection:'row',
   }
 });
