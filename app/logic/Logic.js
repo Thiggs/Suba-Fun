@@ -4,7 +4,7 @@ import { data } from '../datasets/Data.js'
 let problems = data.map(value => value.problem);
 let answers = data.map(value => value.answer);
 
-var unknown = problems
+let unknown = problems
 var learning = []
 var known = []
 
@@ -48,16 +48,7 @@ else {
 
 }
 
-
-//points - 1 point for each correct answer (e.g., coins)
-//1 special point (e.g., bucks) for correct answer if learning
-
-//error correction: (insert - does not count in 5 trials above) - errorless trial, 
-//distractor, represent as learning. if fail on represent, repeat error correction; 
-//if succeed, keep in learning, provide coin (not buck) and continue with trial. 
-//If it was a known, we should not provide a buck the next time it is moved to known.
-
-
+choices=choices.map(d=>d.toString());
 
 export { questions, choices }
 
