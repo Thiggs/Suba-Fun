@@ -35,12 +35,15 @@ export default class App extends React.Component {
   render(){
     return (
       <View style={styles.container}>
+      <View style={styles.pad} />
       <View style={styles.rows}>
         <Problem question = {this.state.question}/>
-        </View>
+        </View> 
+        <View style={styles.pad} />
         <View style={styles.rows}>
         <Choices onPress={this.handlePress.bind(this)} choices={this.state.choices} />
       </View>
+      <View style={styles.pad} />
       </View>
     );
   }
@@ -54,8 +57,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection:'column',
   },
-  rows: {
+  pad: {
     flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection:'row',
+  },
+  rows: {
+    flex: 2,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',

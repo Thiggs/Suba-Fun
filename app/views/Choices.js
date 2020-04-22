@@ -10,9 +10,9 @@ export class Choices extends React.Component {
       }
       render(){
         return (
-        <View>
+        <View style={styles.answerContainer}>
             {this.props.choices.map(d=>(
-                <Button onPress={() => this.handlePress(d)} title={d} key={d} />
+                <View style={styles.buttonContainer}><Button onPress={() => this.handlePress(d)} title={d} key={d}/></View>
             ))
             }
         </View>
@@ -20,3 +20,11 @@ export class Choices extends React.Component {
     }
 }
 
+const styles ={
+    answerContainer: {
+        flex: 1
+    },
+    buttonContainer: {
+        flex: 1
+    }
+}

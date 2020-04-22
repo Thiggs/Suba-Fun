@@ -39,7 +39,7 @@ export class Problem extends React.Component {
 
         return (
         <View>
-            <View class="dotContainer">
+            <View style={styles.dotContainer}>
                 {circleMaker}
             </View>
         </View>
@@ -48,6 +48,10 @@ export class Problem extends React.Component {
 }
 
 const styles= StyleSheet.create({
+    dotContainer: {
+        flex: 1,
+        padding : 10
+    },
     column: {
         flex: 1,
         flexDirection: 'column'
