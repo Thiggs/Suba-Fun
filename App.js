@@ -30,8 +30,6 @@ export default class App extends React.Component {
       question: newQuestion.questions,
       choices: newQuestion.choiceSet
     });
-    console.log(this.state);
-
   }
 
   render(){
@@ -66,20 +64,16 @@ const styles = StyleSheet.create({
 });
 
 function answerChecker(userAnswer, correctAnswer){
-  console.log("checker inputs are "+userAnswer+", "+correctAnswer)
   var newChoices;
   if (userAnswer == correctAnswer){
-    console.log("correct answer")
     newChoices=questionMaker();
   }
   else {
-    console.log("incorrect answer")
     newChoices={
       questions: correctAnswer,
       choiceSet: [correctAnswer.toString()]
     }
   }
-  console.log("New choices are: "+newChoices.questions+", "+newChoices.choiceSet)
   return newChoices;
 };
 

@@ -15,8 +15,6 @@ export class Choices extends React.Component {
                 <Button onPress={() => this.handlePress(d)} title={d} key={d} />
             ))
             }
-            <Text>I am a list of choices.</Text>
-            <Text>If you click me, I should pass on what was clicked.</Text>
         </View>
         );
     }
