@@ -5,11 +5,11 @@ let problems = data.map(value => value.problem);
 let answers = data.map(value => value.answer);
 
 let unknown = problems
-var learning = []
-var known = []
+let learning = [3]
+let known = [1,5,6,9]
 
-var questions =[];
-var choices = [];
+let questions =[];
+let choices = [];
 
 //repeat trials of 5 until game is won. Game is won when learning and unknown are all moved to known.
 if(unknown.length==0&&learning.length==0){
@@ -48,7 +48,7 @@ else {
 
 }
 
-choices=choices.map(d=>d.toString());
+choices=choices[0].map(d=>d.toString());
 
 export { questions, choices }
 

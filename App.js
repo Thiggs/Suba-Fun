@@ -12,16 +12,27 @@ export default class App extends React.Component {
       //if in unknown, move to learning.
   constructor(props) {
     super(props);
-    this.state={};
+    //state is the selected answer
+    this.state = {
+      userAnswer: null
+    }
   }
+
+  handlePress = (val)=> {
+    this.setState({
+      userAnswer: val
+    })
+  }
+
   render(){
+    console.log(this.state)
     return (
       <View style={styles.container}>
       <View style={styles.rows}>
         <Problem />
         </View>
         <View style={styles.rows}>
-        <Choices />
+        <Choices onPress={this.handlePress.bind(this)} />
       </View>
       </View>
     );

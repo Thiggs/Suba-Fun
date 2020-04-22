@@ -3,11 +3,17 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { choices } from '../logic/Logic.js';
 
 export class Choices extends React.Component {
-    render(){
+    constructor(props){
+        super(props);
+    }
+    handlePress = value => {
+       this.props.onPress(value);
+      }
+      render(){
         return (
         <View>
             {choices.map(d=>(
-                <Button onPress={console.log(d+" pressed")} title={d} key={d} />
+                <Button onPress={() => this.handlePress(d)} title={d} key={d} />
             ))
             }
             <Text>I am a list of choices.</Text>
@@ -16,3 +22,4 @@ export class Choices extends React.Component {
         );
     }
 }
+

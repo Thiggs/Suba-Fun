@@ -3,6 +3,9 @@ import { StyleSheet, Text, View} from 'react-native';
 import { questions } from '../logic/Logic.js';
 
 export class Problem extends React.Component {
+    constructor(props){
+        super(props);
+    }
     render(){
         return (
         <View>
