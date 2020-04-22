@@ -25,7 +25,6 @@ export default class App extends React.Component {
   }
 
   render(){
-    console.log(this.state)
     return (
       <View style={styles.container}>
       <View style={styles.rows}>
