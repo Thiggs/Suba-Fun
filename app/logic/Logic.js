@@ -48,11 +48,10 @@ else {
 
 }
 
-choices=choices[0].map(d=>d.toString());
+var choiceSet=choices[0].map(d=>d.toString());
 questions = questions[0];
-console.log(questions)
 
-export { questions, choices }
+export { questions, choiceSet }
 
 
 

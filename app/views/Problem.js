@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View} from 'react-native';
-import { questions } from '../logic/Logic.js';
 
 export class Problem extends React.Component {
     constructor(props){
@@ -13,7 +12,7 @@ export class Problem extends React.Component {
         let bucket = [0,1,2,3,4,5,6,7,8]
         let containsCircle = [false,false,false,false,false,false,false,false,false]
 
-    for (var i=0; i<(9-questions); i++){
+    for (var i=0; i<(9-this.props.question); i++){
         var randomIndex = Math.floor(Math.random()*bucket.length);
          bucket.splice(randomIndex, 1);
     }
