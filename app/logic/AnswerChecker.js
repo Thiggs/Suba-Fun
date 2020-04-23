@@ -24,6 +24,7 @@ function answerChecker(userAnswer, currentState){
       var nextQuestion=questionMaker();
       newState.question=nextQuestion.questions;
       newState.choices=nextQuestion.choiceSet;
+      newState.prompt="+1 point!"
     }
     //if incorrect answer is given, we need to provide it errorlessly, then provide a distractor, then provide it again
     else {
@@ -31,6 +32,7 @@ function answerChecker(userAnswer, currentState){
     questionHolder=currentState.question;
     newState.choices= [currentState.question.toString()];
     newState.distractor= 2;
+    newState.prompt = "This is "+currentState.question+".\n\n Tap "+currentState.question+" below to continue.";
       }
     return newState;
   };
