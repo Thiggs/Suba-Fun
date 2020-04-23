@@ -18,16 +18,16 @@ export default class App extends React.Component {
       question: initQuestion.problem,
       answer: initQuestion.answer,
       choices: initQuestion.choiceSet,
+      _id: initQuestion._id,
+      buck: initQuestion.buck,
+      type: initQuestion.type,
       prompt: null,
       distractor: 0
     }
   }
 
   handlePress = (val)=> {
-    this.setState({
-      userAnswer: val
-    });
-  var newQuestion =  answerChecker(val, this.state);
+  var newQuestion =  answerChecker(val, this.state).newState;
     this.setState({
       newQuestion
     });
