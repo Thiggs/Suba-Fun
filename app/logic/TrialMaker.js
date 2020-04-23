@@ -1,11 +1,11 @@
 import React from 'react';
-import { data } from '../datasets/Data.js'
+import { UserData } from '../datasets/UserData.js'
 //takes in data from dataset and shuffles it to avoid repeats, then filters it to an array of 5 objects, as follows:
 
-const possibleAnswers=data.map(value => value.answer);
+const possibleAnswers=UserData.map(value => value.answer);
 
 function trialMaker(){
-    let shuffledData = shuffleArray(data)
+    let shuffledData = shuffleArray(UserData)
     let trialData =[]
 
     //get up to 4 known items
@@ -31,16 +31,19 @@ function trialMaker(){
         })
     }
 
-        //fill trialData to 5 trials with unknowns
-    for (var i=0; i<shuffledData.length; i++){
-        if (trialData.length == 5){
-            i=shuffledData.length;
+        //fill trialData up to 5 trials with unknowns, adding no more than 2
+        var pickAgain = 0;
+        for (var i=0; i<shuffledData.length; i++){
+            if (trialData.length == 5 || pickAgain == 2){
+                i=shuffledData.length;
+            }
+            else if (shuffledData[i].type ==="unknown"){
+                shuffledData[i].choiceSet=[shuffledData[i].answer];
+                trialData.push(shuffledData[i]);
+                pickAgain++;
+            }
         }
-        else if (shuffledData[i].type ==="unknown"){
-            shuffledData[i].choiceSet=[shuffledData[i].answer]
-            trialData.push(shuffledData[i])
-        }
-    }
+    
 
     return { trialData };
 }

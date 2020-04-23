@@ -1,4 +1,5 @@
-import { questionMaker } from './QuestionMaker.js'
+import { questionMaker } from './QuestionMaker.js';
+import { updateData } from '../datasets/UserData.js';
 
 let choiceSetHolder;
 let questionHolder;
@@ -52,8 +53,10 @@ function answerChecker(userAnswer, currentState){
     newState.prompt = "This is "+currentState.question+".\n\n Tap "+currentState.question+" below to continue.";
     newState.type = "unknown"
       }
-      console.log(dataUpdater)
-    return {newState, dataUpdater};
+
+      if(dataUpdater.length>0){updateData(dataUpdater)};
+
+    return {newState};
   };
   
   export { answerChecker };
