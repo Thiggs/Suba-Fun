@@ -11,7 +11,7 @@ var menu = "Hamburger"
         <View style={styles.row}>
             <Text style={styles.column}>{ points }</Text> 
             <Text style={styles.column}>{ bucks }</Text>
-            <Button onPress={console.log("Thank you for clicking the hamburger")} title={menu} key="menuButton" style={styles.column}/>
+            <Button onPress={()=>console.log("Thank you for clicking the hamburger")} title={menu} key="menuButton" style={styles.column}/>
         </View>
         );
 };

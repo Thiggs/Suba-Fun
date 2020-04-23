@@ -1,12 +1,13 @@
 import React from 'react';
-import {StyleSheet,View} from "react-native" ;
+import { StyleSheet, View, Text } from "react-native" ;
 
-import { Navbar } from './app/navbar/Navbar.js'
+import { Navbar } from './app/navbar/Navbar.js';
 import { Problem } from './app/views/Problem.js';
 import { Choices } from './app/views/Choices.js';
+import { Footerbar } from './app/navbar/Footerbar.js';
 
-import { questionMaker } from './app/logic/QuestionMaker.js'
-import { answerChecker } from './app/logic/AnswerChecker.js'
+import { questionMaker } from './app/logic/QuestionMaker.js';
+import { answerChecker } from './app/logic/AnswerChecker.js';
 
 
 export default class App extends React.Component {
@@ -16,6 +17,8 @@ export default class App extends React.Component {
     this.state = {
       question: initQuestion.questions,
       choices: initQuestion.choiceSet,
+      prompt: null,
+      distractor: 0
     }
   }
 
@@ -23,25 +26,25 @@ export default class App extends React.Component {
     this.setState({
       userAnswer: val
     });
-  var newQuestion =  answerChecker(val, this.state.question);
+  var newQuestion =  answerChecker(val, this.state);
     this.setState({
-      question: newQuestion.questions,
-      choices: newQuestion.choiceSet
+      newQuestion
     });
   }
 
   render(){
+
     return (
       <View style={styles.container}>
-      <Navbar />
-      <View style={styles.rows}>
-        <Problem question = {this.state.question}/>
-        </View> 
-        <View style={styles.pad} />
+        <Navbar />
         <View style={styles.rows}>
-        <Choices onPress={this.handlePress.bind(this)} choices={this.state.choices} />
-      </View>
-      <View style={styles.pad} />
+          <Problem question = { this.state.question }/>
+          </View> 
+          <Text>{this.state.prompt}</Text>
+        <View style={styles.rows}>
+          <Choices onPress={this.handlePress.bind(this)} choices={ this.state.choices } />
+        </View>
+        <Footerbar />
       </View>
     );
   }
