@@ -13,9 +13,10 @@ import { answerChecker } from './app/logic/AnswerChecker.js';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    let initQuestion=questionMaker();
+    let initQuestion=questionMaker().currentQuestion;
     this.state = {
-      question: initQuestion.questions,
+      question: initQuestion.problem,
+      answer: initQuestion.answer,
       choices: initQuestion.choiceSet,
       prompt: null,
       distractor: 0

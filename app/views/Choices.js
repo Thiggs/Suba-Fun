@@ -12,7 +12,7 @@ export class Choices extends React.Component {
         return (
         <View style={styles.answerContainer}>
             {this.props.choices.map(d=>(
-                <View style={styles.buttonContainer} key={"buttonContainer "+d}><Button onPress={() => this.handlePress(d)} title={d} key={"choice "+d}/></View>
+                <View style={styles.buttonContainer} key={"buttonContainer "+d}><Button onPress={() => this.handlePress(d)} title={d.toString()} key={"choice "+d}/></View>
             ))
             }
         </View>

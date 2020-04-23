@@ -8,19 +8,19 @@ const data = [{
     _id: 2,
     problem: 2,
     answer:2,
-    type: "unknown",
+    type: "known",
     buck: 1
 },{
     _id: 3,
     problem: 3,
     answer:3,
-    type: "unknown",
+    type: "known",
     buck: 1
 },{
     _id: 4,
     problem: 4,
     answer:4,
-    type: "unknown",
+    type: "known",
     buck: 1
 },{
     _id: 5,
@@ -32,13 +32,13 @@ const data = [{
     _id: 6,
     problem: 6,
     answer:6,
-    type: "unknown",
+    type: "learning",
     buck: 1
 },{
     _id: 7,
     problem: 7,
     answer:7,
-    type: "unknown",
+    type: "learning",
     buck: 1
 },{
     _id: 8,

@@ -20,9 +20,10 @@ function answerChecker(userAnswer, currentState){
         newState.prompt=null;
     }
     //only if the answer is correct do we move on to the next question in the trial
-    else if (userAnswer == currentState.question){
-      var nextQuestion=questionMaker();
-      newState.question=nextQuestion.questions;
+    else if (userAnswer == currentState.answer){
+      var nextQuestion=questionMaker().currentQuestion;
+      newState.question=nextQuestion.problem;
+      newState.answer=nextQuestion.answer;
       newState.choices=nextQuestion.choiceSet;
       newState.prompt="+1 point!"
     }
@@ -34,6 +35,7 @@ function answerChecker(userAnswer, currentState){
     newState.distractor= 2;
     newState.prompt = "This is "+currentState.question+".\n\n Tap "+currentState.question+" below to continue.";
       }
+
     return newState;
   };
   
