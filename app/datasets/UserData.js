@@ -1,5 +1,5 @@
 import React from 'react';
-import { data } from '../datasets/Data.js';
+import { data } from '../../games/SubaFun/SubaFunData.js';
 
 var UserData=data;
 var totalPoints=0;

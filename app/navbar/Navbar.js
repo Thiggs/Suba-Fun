@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { totalPoints, totalBucks } from '../datasets/UserData.js';
 
 export class Navbar extends React.Component {
@@ -7,12 +7,20 @@ export class Navbar extends React.Component {
 render(){
 var points = totalPoints;
 var bucks = totalBucks;
-var menu = "Hamburger"
+
     return(
         <View style={styles.row}>
-            <Text style={styles.column}>{ points } points</Text> 
-            <Text style={styles.column}>{ bucks } bucks</Text>
-            <Button onPress={()=>console.log("Thank you for clicking the hamburger")} title={menu} key="menuButton" style={styles.column}/>
+            <Text style={styles.column}>
+                <Image source={require('../../assets/coins.png')}  style={{ width: 30, height: 30, resizeMode: 'contain'}}/> 
+                 {"  "}{ points }
+            </Text> 
+            <Text style={styles.column}>
+                <Image source={require('../../assets/bills.png')}   style={{ width: 40, height: 40, resizeMode: 'contain'}}/> 
+                {"  "}{ bucks }
+            </Text>
+            <TouchableOpacity onPress={()=>console.log("Thank you for clicking the hamburger")} style={styles.column}>
+                <Image source={require('../../assets/hamburger.png')}   style={{ width: 50, height: 50, resizeMode: 'contain', backgroundColor: 'lightblue', tintColor: 'white'}}/> 
+            </TouchableOpacity>
         </View>
         );
 };
@@ -23,6 +31,8 @@ const styles={
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
+        borderBottomWidth: 1,
+        borderColor: "lightgray"
     },
     column: {
         flex: 1,
