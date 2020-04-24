@@ -29,14 +29,15 @@ var bucks = totalBucks;
 const styles={
     row: {
         flex: 1,
+        alignItems: 'flex-end',
         flexDirection: 'row',
-        alignItems: 'center',
         borderBottomWidth: 1,
-        borderColor: "lightgray"
+        borderColor: "black",
+        padding: 5,
     },
     column: {
         flex: 1,
+        alignItems: 'flex-end',
         flexDirection: 'column',
-        alignItems: 'center',
     }
 }

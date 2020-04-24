@@ -23,6 +23,8 @@ export class Problem extends React.Component {
 const styles= StyleSheet.create({
     container: {
         flex: 1,
-        padding : 10
+        padding : 10,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });

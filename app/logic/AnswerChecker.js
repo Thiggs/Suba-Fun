@@ -1,3 +1,6 @@
+import React from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
+
 import { questionMaker } from './QuestionMaker.js';
 import { updateData, updateStats } from '../datasets/UserData.js';
 
@@ -27,12 +30,12 @@ function answerChecker(userAnswer, currentState){
     else if (userAnswer == currentState.answer){
       if(currentState.type=="unknown"){
           dataUpdater.push({_id: currentState._id, type: "learning"});
-          newState.prompt="+1 point!";
+          newState.prompt=promptPoint;
           statTracker.points= 1;
           updateData(dataUpdater);
       }
       else if(currentState.buck==1){
-          newState.prompt="+1 buck and 1 point";
+          newState.prompt=promptBuck;
           dataUpdater.push({_id: currentState._id, buck: 0, type:"known"});
           statTracker.points = 1;
           statTracker.bucks = 1;
@@ -40,7 +43,7 @@ function answerChecker(userAnswer, currentState){
       }
       else {
           if(currentState.type !=="known"){statTracker.known = 1;};
-          newState.prompt="+1 point!";
+          newState.prompt=promptPoint;
           dataUpdater.push({_id: currentState._id, type:"known"});
           statTracker.points = 1;
       }
@@ -83,3 +86,11 @@ function answerChecker(userAnswer, currentState){
   };
   
   export { answerChecker };
+
+  const promptPoint =    <Text>  {"+1  "}
+  <Image source={require('../../assets/singleCoin.png')}   style={{ width: 30, height: 30, resizeMode: 'contain'}}/> 
+</Text>
+
+  const promptBuck = <Text>  {"+1  "}
+  <Image source={require('../../assets/singleDollar.png')}   style={{ width: 30, height: 30, resizeMode: 'contain'}}/> 
+</Text>

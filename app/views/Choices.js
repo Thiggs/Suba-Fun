@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export class Choices extends React.Component {
     constructor(props){
@@ -12,7 +12,9 @@ export class Choices extends React.Component {
         return (
         <View style={styles.answerContainer}>
             {this.props.choices.map(d=>(
-                <View style={styles.buttonContainer} key={"buttonContainer "+d}><Button onPress={() => this.handlePress(d)} title={d.toString()} key={"choice "+d}/></View>
+                    <TouchableOpacity onPress={() => this.handlePress(d)} style={styles.choiceButton} key={"button"+d}>
+                    <Text>{d.toString()}</Text>
+                    </TouchableOpacity>
             ))
             }
         </View>
@@ -22,9 +24,18 @@ export class Choices extends React.Component {
 
 const styles ={
     answerContainer: {
-        flex: 1
+        flex: 1,
+
     },
-    buttonContainer: {
-        flex: 1
+    choiceButton: {
+        marginBottom: 10,
+        marginLeft: '10%',
+        flexDirection: 'row',
+        width: "80%",
+        backgroundColor: 'lightblue',
+        height:50,
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 }
