@@ -1,5 +1,5 @@
 import { questionMaker } from './QuestionMaker.js';
-import { updateData } from '../datasets/UserData.js';
+import { updateData, updateStats } from '../datasets/UserData.js';
 
 let choiceSetHolder;
 let questionHolder;
@@ -7,6 +7,7 @@ let questionHolder;
 function answerChecker(userAnswer, currentState){
     var newState = currentState;
     var dataUpdater =[];
+    var statTracker={};
 
     //Provides a distractor if previous answer was incorrect
     if (currentState.distractor == 2){
@@ -27,14 +28,20 @@ function answerChecker(userAnswer, currentState){
       if(currentState.type=="unknown"){
           dataUpdater.push({_id: currentState._id, type: "learning"});
           newState.prompt="+1 point!";
+          statTracker.points= 1;
       }
       else if(currentState.buck==1){
           newState.prompt="+1 buck and 1 point";
           dataUpdater.push({_id: currentState._id, buck: 0, type:"known"});
+          statTracker.points = 1;
+          statTracker.bucks = 1;
+          statTracker.known = 1
       }
       else {
+          if(currentState.type !=="known"){statTracker.known = 1;};
           newState.prompt="+1 point!";
           dataUpdater.push({_id: currentState._id, type:"known"});
+          statTracker.points = 1;
       }
       var nextQuestion=questionMaker().currentQuestion;
       newState.question=nextQuestion.problem;
@@ -46,15 +53,17 @@ function answerChecker(userAnswer, currentState){
     }
     //if incorrect answer is given, we need to provide it errorlessly, then provide a distractor, then provide it again
     else {
+    if(currentState.type == "known"){statTracker.unknown = 1}
     choiceSetHolder=currentState.choices;
     questionHolder=currentState.question;
     newState.choices= [currentState.question.toString()];
     newState.distractor= 2;
     newState.prompt = "This is "+currentState.question+".\n\n Tap "+currentState.question+" below to continue.";
-    newState.type = "unknown"
+    newState.type = "unknown";
       }
 
       if(dataUpdater.length>0){updateData(dataUpdater)};
+      if(statTracker){updateStats(statTracker)};
 
     return {newState};
   };

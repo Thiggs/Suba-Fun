@@ -2,6 +2,10 @@ import React from 'react';
 import { data } from '../datasets/Data.js';
 
 var UserData=data;
+var totalPoints=0;
+var totalBucks=0;
+var knownTotal=0;
+var notKnownTotal=data.length;
 
 function updateData (dataToUpdate){
  
@@ -13,6 +17,19 @@ function updateData (dataToUpdate){
 
 }
 
+function updateStats(statsToUpdate){
+    if(statsToUpdate.points){totalPoints+=statsToUpdate.points}
+    if(statsToUpdate.bucks){totalBucks+=statsToUpdate.bucks}
+    if(statsToUpdate.known){
+        knownTotal+=statsToUpdate.known;
+        notKnownTotal-=statsToUpdate.known;
+    }
+    if (statsToUpdate.unknown){
+        knownTotal-=statsToUpdate.unknown;
+        notKnownTotal+=statsToUpdate.unknown;
+    }
+}
 
 
-export { updateData, UserData }
+
+export { updateData, updateStats, UserData }
