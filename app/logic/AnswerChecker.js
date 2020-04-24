@@ -29,6 +29,7 @@ function answerChecker(userAnswer, currentState){
           dataUpdater.push({_id: currentState._id, type: "learning"});
           newState.prompt="+1 point!";
           statTracker.points= 1;
+          updateData(dataUpdater);
       }
       else if(currentState.buck==1){
           newState.prompt="+1 buck and 1 point";
@@ -62,11 +63,11 @@ function answerChecker(userAnswer, currentState){
             newState.type = "unknown";
       }
     //update userData if needed
-    if(dataUpdater.length>0){updateData(dataUpdater)};
+    if(dataUpdater.length>0){
+        updateData(dataUpdater)};
     if(statTracker){
         var win = updateStats(statTracker);
         if(win){
-            console.log("win")
                 newState.question= 0;
                 newState.choices= ["You win!"];
                 newState.prompt= "Congratulations!";
@@ -77,7 +78,6 @@ function answerChecker(userAnswer, currentState){
                 newState.distractor= 0;
         }
     };
-    console.log(newState)
     //return new state to App
     return {newState};
   };

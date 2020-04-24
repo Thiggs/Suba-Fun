@@ -37,6 +37,7 @@ function trialMaker(){
             if (trialData.length == 5 || pickAgain == 2){
                 i=shuffledData.length;
             }
+
             else if (shuffledData[i].type ==="unknown"){
                 shuffledData[i].choiceSet=[shuffledData[i].answer];
                 trialData.push(shuffledData[i]);
@@ -44,7 +45,6 @@ function trialMaker(){
             }
         }
     
-
     return { trialData };
 }
 
