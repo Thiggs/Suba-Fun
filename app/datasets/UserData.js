@@ -32,4 +32,4 @@ function updateStats(statsToUpdate){
 
 
 
-export { updateData, updateStats, UserData }
+export { updateData, updateStats, UserData, totalPoints, totalBucks, knownTotal, notKnownTotal }
