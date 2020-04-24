@@ -53,18 +53,32 @@ function answerChecker(userAnswer, currentState){
     }
     //if incorrect answer is given, we need to provide it errorlessly, then provide a distractor, then provide it again
     else {
-    if(currentState.type == "known"){statTracker.unknown = 1}
-    choiceSetHolder=currentState.choices;
-    questionHolder=currentState.question;
-    newState.choices= [currentState.question.toString()];
-    newState.distractor= 2;
-    newState.prompt = "This is "+currentState.question+".\n\n Tap "+currentState.question+" below to continue.";
-    newState.type = "unknown";
+        if(currentState.type == "known"){statTracker.unknown = 1}
+            choiceSetHolder=currentState.choices;
+            questionHolder=currentState.question;
+            newState.choices= [currentState.question.toString()];
+            newState.distractor= 2;
+            newState.prompt = "This is "+currentState.question+".\n\n Tap "+currentState.question+" below to continue.";
+            newState.type = "unknown";
       }
-
-      if(dataUpdater.length>0){updateData(dataUpdater)};
-      if(statTracker){updateStats(statTracker)};
-
+    //update userData if needed
+    if(dataUpdater.length>0){updateData(dataUpdater)};
+    if(statTracker){
+        var win = updateStats(statTracker);
+        if(win){
+            console.log("win")
+                newState.question= 0;
+                newState.choices= ["You win!"];
+                newState.prompt= "Congratulations!";
+                newState.answer= null;
+                newState._id= null;
+                newState.buck= null;
+                newState.type= null;
+                newState.distractor= 0;
+        }
+    };
+    console.log(newState)
+    //return new state to App
     return {newState};
   };
   

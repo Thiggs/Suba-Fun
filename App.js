@@ -27,7 +27,7 @@ export default class App extends React.Component {
   }
 
   handlePress = (val)=> {
-  var newQuestion =  answerChecker(val, this.state).newState;
+  var newQuestion =  answerChecker(val, this.state);
     this.setState({
       newQuestion
     });

@@ -28,6 +28,9 @@ function updateStats(statsToUpdate){
         knownTotal-=statsToUpdate.unknown;
         notKnownTotal+=statsToUpdate.unknown;
     }
+    if(notKnownTotal==0){
+        return "win";
+    }
 }
 
 
