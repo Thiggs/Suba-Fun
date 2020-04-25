@@ -76,9 +76,9 @@ console.log(currentState.question+", "+userAnswer)
         if(currentState.type == "known"){statTracker.unknown = 1}
             choiceSetHolder=currentState.choices;
             questionHolder=currentState.question;
-            newState.choices= [currentState.question.toString()];
+            newState.choices= [currentState.answer.toString()];
             newState.distractor= 2;
-            newState.prompt = "This is "+currentState.question+".\n\n Tap "+currentState.question+" below to continue.";
+            newState.prompt = "This is "+currentState.answer+".\n\n Tap "+currentState.answer+" below to continue.";
             newState.type = "unknown";
       }
     //update userData if needed
