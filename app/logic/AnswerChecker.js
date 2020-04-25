@@ -32,7 +32,7 @@ function answerChecker(userAnswer, currentState){
 
     //Provides a distractor if previous answer was incorrect
     else if (currentState.distractor == 2){
-        newState.question=0;
+        newState.question="";
         newState.prompt= "Right! Let's try again to be sure.";
         newState.choices=["Tap to Continue"];
         newState.distractor= 1;
