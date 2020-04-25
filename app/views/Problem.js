@@ -3,6 +3,11 @@ import { StyleSheet, Text, View} from 'react-native';
 import { subaFunCircles } from '../../games/SubaFun/SFCircleMakerFunc.js';
 import { game } from '../datasets/UserData.js'
 
+//////////////////////////////////////////////////////////////////
+//RENDERS THE VIEW FOR THE QUESTION, SENDS TO APP
+//DEFAULTS TO TEXT DISPLAY, SENDS TO OTHER FUNCTIONS IF NEEDED
+//////////////////////////////////////////////////////////////////
+
 export class Problem extends React.Component {
     constructor(props){
         super(props);

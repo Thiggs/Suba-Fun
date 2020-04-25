@@ -3,6 +3,13 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { totalPoints, totalBucks } from '../datasets/UserData.js';
 
 export class Navbar extends React.Component {
+    constructor(props){
+        super(props);
+    }
+
+    burgerPress = value => {
+        this.props.onPress();
+       }
 
 render(){
 var points = totalPoints;
@@ -18,7 +25,7 @@ var bucks = totalBucks;
                 <Image source={require('../../assets/bills.png')}   style={{ width: 40, height: 40, resizeMode: 'contain'}}/> 
                 {"  "}{ bucks }
             </Text>
-            <TouchableOpacity onPress={()=>console.log("Thank you for clicking the hamburger")} style={styles.column}>
+            <TouchableOpacity onPress={() => this.burgerPress()} style={styles.column}>
                 <Image source={require('../../assets/hamburger.png')}   style={{ width: 50, height: 50, resizeMode: 'contain', backgroundColor: 'lightblue', tintColor: 'white'}}/> 
             </TouchableOpacity>
         </View>

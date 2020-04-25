@@ -1,6 +1,10 @@
 import React from 'react';
 import { UserData } from '../datasets/UserData.js'
-//takes in data from dataset and shuffles it to avoid repeats, then filters it to an array of 5 objects, as follows:
+
+///////////////////////////////////////////////////////////////////
+//THIS FUNCTION CREATES A TRIAL OF 5 QUESTIONS BASED ON SOME LOGIC
+//THEN PASSES THAT TO QUESTION-MAKER
+//////////////////////////////////////////////////////////////////
 
 let possibleAnswers=UserData.map(value => value.answer);
 

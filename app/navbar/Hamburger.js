@@ -1,23 +1,22 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { answerChecker } from '../logic/AnswerChecker.js'
 
-//////////////////////////////////////////////////////////////////
-//RENDERS THE VIEW FOR THE ANSWER CHOICES, SENDS TO APP
-//////////////////////////////////////////////////////////////////
+var gameList = [ "SubaFun", "SpanishNouns", "KlingonNouns", "FiveFrame" ];
 
-export class Choices extends React.Component {
+export class Hamburger extends React.Component {
     constructor(props){
         super(props);
     }
-    handlePress = value => {
-       this.props.onPress(value);
-      }
+    burgerSelector = value => {
+        this.props.onPress(value);
+       }
       render(){
         return (
         <View style={styles.answerContainer}>
-            {this.props.choices.map(d=>(
-                    <TouchableOpacity onPress={() => this.handlePress(d)} style={styles.choiceButton} key={"button"+d}>
-                    <Text>{d.toString()}</Text>
+            {gameList.map(d=>(
+                    <TouchableOpacity onPress={() => {this.burgerSelector(d)}} style={styles.choiceButton} key={"game"+d}>
+                    <Text>{d}</Text>
                     </TouchableOpacity>
             ))
             }
@@ -29,7 +28,8 @@ export class Choices extends React.Component {
 const styles ={
     answerContainer: {
         flex: 1,
-
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     choiceButton: {
         marginBottom: 10,

@@ -4,6 +4,10 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import { questionMaker } from './QuestionMaker.js';
 import { updateData, updateStats, gameSelector } from '../datasets/UserData.js';
 
+//////////////////////////////////////////////////////////////////
+//THIS FUNCTION HANDLES ALL LOGIC ONCE A USER SELECTS AN ANSWER
+//////////////////////////////////////////////////////////////////
+
 let choiceSetHolder;
 let questionHolder;
 
@@ -13,8 +17,6 @@ function answerChecker(userAnswer, currentState){
     var statTracker={};
 
     //if game was selected
-console.log(currentState.question+", "+userAnswer)
-
     if(currentState.question==="Select a game"){
         gameSelector (userAnswer);
         var clear = true;
@@ -48,7 +50,6 @@ console.log(currentState.question+", "+userAnswer)
           dataUpdater.push({_id: currentState._id, type: "learning"});
           newState.prompt=promptPoint;
           statTracker.points= 1;
-          updateData(dataUpdater);
       }
       else if(currentState.buck==1){
           newState.prompt=promptBuck;
@@ -87,9 +88,9 @@ console.log(currentState.question+", "+userAnswer)
     if(statTracker){
         var win = updateStats(statTracker);
         if(win){
-                newState.question= 0;
-                newState.choices= ["You win!"];
-                newState.prompt= "Congratulations!";
+                newState.question= "";
+                newState.choices= [];
+                newState.prompt= "Congratulations! You Win!";
                 newState.answer= null;
                 newState._id= null;
                 newState.buck= null;

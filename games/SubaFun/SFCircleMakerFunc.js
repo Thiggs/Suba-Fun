@@ -1,6 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View} from 'react-native';
 
+///////////////////////////////////////////////////////////////////////////////
+//RENDERS THE VIEW FOR SUBAFUN QUESTIONS - BECAUSE THE QUESTIONS ARE NOT TEXT
+//////////////////////////////////////////////////////////////////////////////
+
 function subaFunCircles(question){
     let circleMaker = [];
 
