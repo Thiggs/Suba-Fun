@@ -2,7 +2,11 @@ import { trialMaker } from './TrialMaker.js'
 
 let currentTrial=[];
 
-function questionMaker(){
+function questionMaker(clear){
+  if(clear){
+    currentTrial =[];
+    trialMaker(clear)
+  }
   if(currentTrial.length==0){
       currentTrial=trialMaker().trialData;
   }

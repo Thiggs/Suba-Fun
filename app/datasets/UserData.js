@@ -1,11 +1,34 @@
 import React from 'react';
-import { data } from '../../games/SubaFun/SubaFunData.js';
+import { sfData } from '../../games/SubaFun/SubaFunData.js';
+import { snData } from '../../games/SpanishNouns/SpanishNounData.js';
+import { knData } from '../../games/KlingonNouns/KlingonNounData.js';
+import { ffData } from '../../games/FiveFrames/FiveFrameData.js';
 
-var UserData=data;
+var UserData=[  
+    {problem: "Select a game", answer: "SubaFun" , type: "learning"}, 
+    {problem: "Select a game", answer:"SpanishNouns", type: "known"}, 
+    {problem: "Select a game", answer:"KlingonNouns", type: "known"},
+    {problem: "Select a game" ,answer: "FiveFrame", type: "known" }
+];
+
 var totalPoints=0;
 var totalBucks=0;
-var knownTotal=0;
-var notKnownTotal=data.length;
+var notKnownTotal=UserData.length;
+var game = "";
+
+function gameSelector (selectedGame){
+    var gameList= [ "SubaFun", "SpanishNouns", "KlingonNouns", "FiveFrame" ]
+    var getDataFunc = [sfData, snData, knData,ffData]
+
+    gameList.forEach((d, i)=>{if (d===selectedGame){
+        UserData=getDataFunc[i]();
+        game=d;
+        notKnownTotal=UserData.length;
+    }})
+
+
+
+}
 
 function updateData (dataToUpdate){
  
@@ -21,11 +44,9 @@ function updateStats(statsToUpdate){
     if(statsToUpdate.points){totalPoints+=statsToUpdate.points}
     if(statsToUpdate.bucks){totalBucks+=statsToUpdate.bucks}
     if(statsToUpdate.known){
-        knownTotal+=statsToUpdate.known;
         notKnownTotal-=statsToUpdate.known;
     }
     if (statsToUpdate.unknown){
-        knownTotal-=statsToUpdate.unknown;
         notKnownTotal+=statsToUpdate.unknown;
     }
     if(notKnownTotal==0){
@@ -35,4 +56,4 @@ function updateStats(statsToUpdate){
 
 
 
-export { updateData, updateStats, UserData, totalPoints, totalBucks, knownTotal, notKnownTotal }
+export { game, updateData, updateStats, UserData, totalPoints, totalBucks, notKnownTotal, gameSelector }

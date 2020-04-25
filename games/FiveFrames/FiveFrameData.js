@@ -54,8 +54,9 @@ const data = [{
     buck: 1
 }];
 
-function sfData(){
+function ffData(){
     return data;
 }
 
-export { sfData };
+export { ffData };
+

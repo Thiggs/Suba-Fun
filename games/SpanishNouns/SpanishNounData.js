@@ -1,61 +1,62 @@
 const data = [{
     _id: 1,
-    problem: 1,
-    answer:1,
+    problem: "people",
+    answer:"pueblo",
     type: "unknown",
     buck: 1
 },{
     _id: 2,
-    problem: 2,
-    answer:2,
+    problem: "Time",
+    answer: "Tiempo",
     type: "unknown",
     buck: 1
 },{
     _id: 3,
-    problem: 3,
-    answer:3,
+    problem: "Year",
+    answer:"año",
     type: "unknown",
     buck: 1
 },{
     _id: 4,
-    problem: 4,
-    answer:4,
+    problem: "thing",
+    answer:"cosa",
     type: "unknown",
     buck: 1
 },{
     _id: 5,
-    problem: 5,
-    answer:5,
+    problem: "way",
+    answer:"camino",
     type: "unknown",
     buck: 1
 },{
     _id: 6,
-    problem: 6,
-    answer:6,
+    problem: "day",
+    answer:"día",
     type: "unknown",
     buck: 1
 },{
     _id: 7,
-    problem: 7,
-    answer:7,
+    problem: "man",
+    answer:"hombre",
     type: "unknown",
     buck: 1
 },{
     _id: 8,
-    problem: 8,
-    answer:8,
+    problem: "state",
+    answer:"estado",
     type: "unknown",
     buck: 1
 },{
     _id: 9,
-    problem: 9,
-    answer:9,
+    problem: "lot",
+    answer:"lote",
     type: "unknown",
     buck: 1
 }];
 
-function sfData(){
+function snData(){
     return data;
 }
 
-export { sfData };
+export { snData };
+

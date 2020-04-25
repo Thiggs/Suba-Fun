@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View} from 'react-native';
 import { subaFunCircles } from '../../games/SubaFun/SFCircleMakerFunc.js';
+import { game } from '../datasets/UserData.js'
 
 export class Problem extends React.Component {
     constructor(props){
@@ -8,7 +9,9 @@ export class Problem extends React.Component {
     }
 
     render(){
-        var gameQuestionStyle = subaFunCircles(this.props.question);
+        var gameQuestionStyle;
+        if (game==="SubaFun"){ gameQuestionStyle = subaFunCircles(this.props.question);}
+        else {gameQuestionStyle= <Text>{this.props.question}</Text>}
 
         return (
         <View>

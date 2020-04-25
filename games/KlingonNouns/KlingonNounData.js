@@ -54,8 +54,9 @@ const data = [{
     buck: 1
 }];
 
-function sfData(){
+function knData(){
     return data;
 }
 
-export { sfData };
+export { knData };
+

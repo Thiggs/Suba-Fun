@@ -2,9 +2,11 @@ import React from 'react';
 import { UserData } from '../datasets/UserData.js'
 //takes in data from dataset and shuffles it to avoid repeats, then filters it to an array of 5 objects, as follows:
 
-const possibleAnswers=UserData.map(value => value.answer);
+let possibleAnswers=UserData.map(value => value.answer);
 
-function trialMaker(){
+function trialMaker(clear){
+    if(clear){possibleAnswers=UserData.map(value => value.answer)}
+
     let shuffledData = shuffleArray(UserData)
     let trialData =[]
 

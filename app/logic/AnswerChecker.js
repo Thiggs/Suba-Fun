@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 import { questionMaker } from './QuestionMaker.js';
-import { updateData, updateStats } from '../datasets/UserData.js';
+import { updateData, updateStats, gameSelector } from '../datasets/UserData.js';
 
 let choiceSetHolder;
 let questionHolder;
@@ -12,8 +12,24 @@ function answerChecker(userAnswer, currentState){
     var dataUpdater =[];
     var statTracker={};
 
+    //if game was selected
+console.log(currentState.question+", "+userAnswer)
+
+    if(currentState.question==="Select a game"){
+        gameSelector (userAnswer);
+        var clear = true;
+        var nextQuestion=questionMaker(clear).currentQuestion;
+        newState.question=nextQuestion.problem;
+        newState.answer=nextQuestion.answer;
+        newState.choices=nextQuestion.choiceSet;
+        newState._id=nextQuestion._id;
+        newState.buck=nextQuestion.buck;
+        newState.type=nextQuestion.type;
+    }
+
+
     //Provides a distractor if previous answer was incorrect
-    if (currentState.distractor == 2){
+    else if (currentState.distractor == 2){
         newState.question=0;
         newState.prompt= "Right! Let's try again to be sure.";
         newState.choices=["Tap to Continue"];
