@@ -27,6 +27,7 @@ function answerChecker(userAnswer, currentState){
         newState._id=nextQuestion._id;
         newState.buck=nextQuestion.buck;
         newState.type=nextQuestion.type;
+        newState.prompt="";
     }
 
 
