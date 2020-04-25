@@ -1,57 +1,30 @@
 const data = [{
-    _id: 1,
     problem: "people",
-    answer:"pueblo",
-    type: "unknown",
-    buck: 1
+    answer:"pueblo"
 },{
-    _id: 2,
     problem: "Time",
-    answer: "Tiempo",
-    type: "unknown",
-    buck: 1
+    answer: "Tiempo"
 },{
-    _id: 3,
     problem: "Year",
-    answer:"año",
-    type: "unknown",
-    buck: 1
+    answer:"año"
 },{
-    _id: 4,
     problem: "thing",
-    answer:"cosa",
-    type: "unknown",
-    buck: 1
+    answer:"cosa"
 },{
-    _id: 5,
     problem: "way",
-    answer:"camino",
-    type: "unknown",
-    buck: 1
+    answer:"camino"
 },{
-    _id: 6,
     problem: "day",
-    answer:"día",
-    type: "unknown",
-    buck: 1
+    answer:"día"
 },{
-    _id: 7,
     problem: "man",
-    answer:"hombre",
-    type: "unknown",
-    buck: 1
+    answer:"hombre"
 },{
-    _id: 8,
     problem: "state",
-    answer:"estado",
-    type: "unknown",
-    buck: 1
+    answer:"estado"
 },{
-    _id: 9,
     problem: "lot",
-    answer:"lote",
-    type: "unknown",
-    buck: 1
+    answer:"lote"
 }];
 
 function snData(){

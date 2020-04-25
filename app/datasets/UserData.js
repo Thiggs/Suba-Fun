@@ -61,13 +61,20 @@ function gameSelector (selectedGame){
     }
 
     gameList.forEach((d, i)=>{if (d===selectedGame){
+        game=d;
         if (dataStore.d){
             UserData=dataStore.d;
             notKnownTotal=UserData.Length-(UserData.map(f=>f.type==="known"))}
         else{
-            UserData=getDataFunc[i]();
-            notKnownTotal=UserData.length;};
-        game=d;
+            var processData=getDataFunc[i]();
+            processData.forEach((g,i)=>{
+                g.buck=1;
+                g.type="unknown"
+                g._id=i
+            })
+            notKnownTotal=processData.length;
+            UserData=processData
+        };
     }})
 }
 
