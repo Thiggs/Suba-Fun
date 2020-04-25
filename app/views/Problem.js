@@ -17,7 +17,7 @@ export class Problem extends React.Component {
     render(){
         var gameQuestionStyle;
         if (game==="SubaFun"){ gameQuestionStyle = subaFunCircles(this.props.question);}
-        if (game==="FiveFrame"){ gameQuestionStyle = fiveFrameCircles(this.props.question);}
+        else if (game==="FiveFrame"){ gameQuestionStyle = fiveFrameCircles(this.props.question);}
         else {gameQuestionStyle= <Text>{this.props.question}</Text>}
 
         return (
