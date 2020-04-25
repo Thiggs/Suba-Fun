@@ -10,3 +10,4 @@ function snData(){
 
 export { snData };
 
+//credit for this list goes to https://1000mostcommonwords.com/1000-most-common-spanish-words/ 

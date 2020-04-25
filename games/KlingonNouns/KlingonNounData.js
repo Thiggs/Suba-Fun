@@ -6,3 +6,5 @@ function knData(){
 
 export { knData };
 
+//credit for this list goes to Klingonska Akademien
+//search terms http://klingonska.org/dict/?q=tlh%3A+en%3A+pos%3Anoun+tag%3Aklcp1
