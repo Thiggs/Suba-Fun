@@ -70,7 +70,11 @@ function gameSelector (selectedGame){
     gameList.forEach((d, i)=>{if (d===selectedGame){
         if (dataStore[d]){
             UserData=dataStore[d];
-            notKnownTotal=UserData.Length-(UserData.map(f=>f.type==="known"))}
+            var knownCount=0;
+           UserData.map(f=>{if(f.type!=="known"){knownCount++}});
+            notKnownTotal=knownCount;
+        }
+
         else{
             var processData=getDataFunc[i]();
             processData.forEach((g,i)=>{
@@ -99,6 +103,9 @@ function updateData (dataToUpdate){
 
 //update total points, bucks, and game progress
 function updateStats(statsToUpdate){
+    if(statsToUpdate.practice){
+        notKnownTotal=UserData.length;
+    };
     if(statsToUpdate.worker){
         var newWorker="#ffffff";
         achievementColors.forEach((d, i)=>{

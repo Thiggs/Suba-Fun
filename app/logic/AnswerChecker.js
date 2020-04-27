@@ -16,8 +16,22 @@ function answerChecker(userAnswer, currentState){
     var dataUpdater =[];
     var statTracker={};
 
+    //if continue game after win is selected
+   if(userAnswer==="Click for extra practice \n You can earn more points, but not more bucks."){
+       statTracker.practice=true;
+       var clear = true;
+       var nextQuestion=questionMaker(clear).currentQuestion;
+       newState.question=nextQuestion.problem;
+       newState.answer=nextQuestion.answer;
+       newState.choices=nextQuestion.choiceSet;
+       newState._id=nextQuestion._id;
+       newState.buck=nextQuestion.buck;
+       newState.type=nextQuestion.type;
+       newState.prompt="";
+   }
+
     //if game was selected
-    if(currentState.question==="Select a game"&&userAnswer!=="store"){
+    else if(currentState.question==="Select a game"&&userAnswer!=="store"){
         gameSelector (userAnswer);
         var clear = true;
         var nextQuestion=questionMaker(clear).currentQuestion;
@@ -55,8 +69,8 @@ function answerChecker(userAnswer, currentState){
         else if(currentState.question==="Select an upgrade"){
             gameSelector ("menu");
             if(userAnswer==="Upgrade Worker Achievement: \n 100 points"){
-                if (totalPoints>=100){
-                statTracker.points = -100;
+                if (totalPoints<=25){
+                statTracker.points = -25;
                 statTracker.worker=true;
                 newState.question="Select a game";
                 newState.answer="";
@@ -70,8 +84,8 @@ function answerChecker(userAnswer, currentState){
             }
             else if(userAnswer==="Upgrade Thinker Achievement: \n 50 bucks"){
                 gameSelector ("menu");
-                if (totalBucks>=50){
-                    statTracker.bucks = -50;
+                if (totalBucks<=25){
+                    statTracker.bucks = -25;
                     statTracker.thinker = true;
                     newState.question="Select a game";
                     newState.answer="";
@@ -145,7 +159,7 @@ function answerChecker(userAnswer, currentState){
         var win = updateStats(statTracker);
         if(win){
                 newState.question= "";
-                newState.choices= [];
+                newState.choices= ["Click for extra practice \n You can earn more points, but not more bucks."];
                 newState.prompt= "Congratulations! You Win!";
                 newState.answer= null;
                 newState._id= null;
