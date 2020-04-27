@@ -47,7 +47,7 @@ if (thinker === '#000000'){
             </Text>
             <View style={styles.column}>
             <TouchableOpacity onPress={() => this.burgerPress()} style={{width: 40, height: 40, justifyContent: 'center', alignItems: 'center'}}>
-                <Image source={require('../../assets/hamburger.png')} resizeMode={'contain'} style={{ width: 40, height: 40, backgroundColor: 'lightblue', tintColor: '#ffffff',  justifyContent: 'center', alignItems: 'center'}}/>
+                <Image source={require('../../assets/hamburger.png')} style={{ width: 40, height: 40, resizeMode:'contain', backgroundColor: 'lightblue', tintColor: '#ffffff',  justifyContent: 'center', alignItems: 'center'}}/>
             </TouchableOpacity>
             </View>
         </View>
