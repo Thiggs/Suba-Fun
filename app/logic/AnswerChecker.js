@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 import { questionMaker } from './QuestionMaker.js';
-import { updateData, updateStats, gameSelector, totalBucks, totalPoints } from '../datasets/UserData.js';
+import { updateData, updateStats, gameSelector, totalBucks, totalPoints, worker, thinker } from '../datasets/UserData.js';
 
 //////////////////////////////////////////////////////////////////
 //THIS FUNCTION HANDLES ALL LOGIC ONCE A USER SELECTS AN ANSWER
@@ -31,19 +31,30 @@ function answerChecker(userAnswer, currentState){
     }
 //if store was selected
        else if(currentState.question==="Select a game"){
+          var newPrompt="";
+          var newChoices=["Upgrade Worker Achievement: \n 100 points", "Upgrade Thinker Achievement: \n 50 bucks"];
+
+           if (worker==="#000000"){
+               newPrompt+=" You have purchased all the Worker Achievements! ";
+               newChoices.shift();
+           }
+           if (thinker==="#000000"){
+            newPrompt+="\n You have purchased all the Thinker Achievements! ";
+            newChoices.pop();
+        }
         gameSelector (userAnswer);
             newState.question="Select an upgrade";
             newState.answer="";
-            newState.choices=["Upgrade Worker Achievement: 100 points", "Upgrade Thinker Achievement: 50 bucks"];
+            newState.choices=newChoices;
             newState._id=""
             newState.buck=0;
             newState.type="known";
-            newState.prompt="";
+            newState.prompt=newPrompt;
         }
         //if item from store was selected
         else if(currentState.question==="Select an upgrade"){
             gameSelector ("menu");
-            if(userAnswer==="Upgrade Worker Achievement: 100 points"){
+            if(userAnswer==="Upgrade Worker Achievement: \n 100 points"){
                 if (totalPoints>=100){
                 statTracker.points = -100;
                 statTracker.worker=true;
@@ -57,7 +68,7 @@ function answerChecker(userAnswer, currentState){
                 }
                 else newState.prompt="insufficient funds"
             }
-            else if(userAnswer==="Upgrade Thinker Achievement: 50 bucks"){
+            else if(userAnswer==="Upgrade Thinker Achievement: \n 50 bucks"){
                 gameSelector ("menu");
                 if (totalBucks>=50){
                     statTracker.bucks = -50;
