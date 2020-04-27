@@ -18,6 +18,7 @@ function questionMaker(clear){
   }
   let currentQuestion=currentTrial[0]
   currentTrial.shift();
+  console.log(currentQuestion.type)
   return { currentQuestion }
 }
 

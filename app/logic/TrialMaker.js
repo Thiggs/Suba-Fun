@@ -40,17 +40,15 @@ function trialMaker(clear){
         //fill trialData up to 5 trials with unknowns, adding no more than 2
         var pickAgain = 0;
         for (var i=0; i<shuffledData.length; i++){
-            if (trialData.length == 5 || pickAgain == 2){
-                i=shuffledData.length;
+            if (trialData.length === 5 || pickAgain === 2){
+                break;
             }
-
             else if (shuffledData[i].type ==="unknown"){
                 shuffledData[i].choiceSet=[shuffledData[i].answer];
                 trialData.push(shuffledData[i]);
                 pickAgain++;
             }
         }
-    
     return { trialData };
 }
 
