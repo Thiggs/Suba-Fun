@@ -8,19 +8,25 @@ export class Hamburger extends React.Component {
     constructor(props){
         super(props);
     }
+
     burgerSelector = value => {
         this.props.onPress(value);
        }
+
+
       render(){
         return (
-        <View style={styles.answerContainer}>
-            {gameList.map(d=>(
-                    <TouchableOpacity onPress={() => {this.burgerSelector(d)}} style={styles.choiceButton} key={"game"+d}>
-                    <Text>{d}</Text>
-                    </TouchableOpacity>
-            ))
-            }
-        </View>
+            <View style={styles.answerContainer}>
+            <TouchableOpacity onPress={() => {this.burgerSelector("store")}} style={styles.choiceButton} key={"store"}>
+                        <Text>Store</Text>
+                        </TouchableOpacity>
+                {gameList.map(d=>(
+                        <TouchableOpacity onPress={() => {this.burgerSelector(d)}} style={styles.choiceButton} key={"game"+d}>
+                        <Text>{d}</Text>
+                        </TouchableOpacity>
+                ))
+                }
+            </View>
         );
     }
 }

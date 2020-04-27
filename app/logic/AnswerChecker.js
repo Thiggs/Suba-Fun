@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 import { questionMaker } from './QuestionMaker.js';
-import { updateData, updateStats, gameSelector } from '../datasets/UserData.js';
+import { updateData, updateStats, gameSelector, totalBucks, totalPoints } from '../datasets/UserData.js';
 
 //////////////////////////////////////////////////////////////////
 //THIS FUNCTION HANDLES ALL LOGIC ONCE A USER SELECTS AN ANSWER
@@ -17,7 +17,7 @@ function answerChecker(userAnswer, currentState){
     var statTracker={};
 
     //if game was selected
-    if(currentState.question==="Select a game"){
+    if(currentState.question==="Select a game"&&userAnswer!=="store"){
         gameSelector (userAnswer);
         var clear = true;
         var nextQuestion=questionMaker(clear).currentQuestion;
@@ -29,6 +29,50 @@ function answerChecker(userAnswer, currentState){
         newState.type=nextQuestion.type;
         newState.prompt="";
     }
+//if store was selected
+       else if(currentState.question==="Select a game"){
+        gameSelector (userAnswer);
+            newState.question="Select an upgrade";
+            newState.answer="";
+            newState.choices=["Upgrade Worker Achievement: 100 points", "Upgrade Thinker Achievement: 50 bucks"];
+            newState._id=""
+            newState.buck=0;
+            newState.type="known";
+            newState.prompt="";
+        }
+        //if item from store was selected
+        else if(currentState.question==="Select an upgrade"){
+            gameSelector ("menu");
+            if(userAnswer==="Upgrade Worker Achievement: 100 points"){
+                if (totalPoints>=100){
+                statTracker.points = -100;
+                statTracker.worker=true;
+                newState.question="Select a game";
+                newState.answer="";
+                newState.choices=["KlingonNouns", "SpanishNouns", "SubaFun", "FiveFrame"];
+                newState._id=""
+                newState.buck=0;
+                newState.type="known";
+                newState.prompt="";
+                }
+                else newState.prompt="insufficient funds"
+            }
+            else if(userAnswer==="Upgrade Thinker Achievement: 50 bucks"){
+                gameSelector ("menu");
+                if (totalBucks>=50){
+                    statTracker.bucks = -50;
+                    statTracker.thinker = true;
+                    newState.question="Select a game";
+                    newState.answer="";
+                    newState.choices=["KlingonNouns", "SpanishNouns", "SubaFun", "FiveFrame"];
+                    newState._id=""
+                    newState.buck=0;
+                    newState.type="known";
+                    newState.prompt="";
+                    }
+                    else newState.prompt="insufficient funds"
+                }
+        }
 
 
     //Provides a distractor if previous answer was incorrect

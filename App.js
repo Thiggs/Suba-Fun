@@ -9,6 +9,7 @@ import { Footerbar } from './app/navbar/Footerbar.js';
 
 import { questionMaker } from './app/logic/QuestionMaker.js';
 import { answerChecker } from './app/logic/AnswerChecker.js';
+import { gameSelector } from './app/datasets/UserData.js';
 
 
 export default class App extends React.Component {
@@ -40,12 +41,12 @@ export default class App extends React.Component {
   }
 
   burgerSelector = (val)=> {
-    var burgerState = this.state;
-    burgerState.question = "Select a game";
-    this.burgerPress();
-    var newQuestion = answerChecker(val, burgerState);
-    this.setState({
-      newQuestion
+      var burgerState = this.state;
+      burgerState.question = "Select a game";
+      this.burgerPress();
+      var newQuestion = answerChecker(val, burgerState);
+      this.setState({
+        newQuestion
     })
   }
 
