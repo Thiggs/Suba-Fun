@@ -17,7 +17,7 @@ function answerChecker(userAnswer, currentState){
     var statTracker={};
 
     //if continue game after win is selected
-   if(userAnswer==="Click for extra practice \n You can earn more points, but not more bucks."){
+   if(userAnswer==="Press for extra practice."){
        statTracker.practice=true;
        var clear = true;
        var nextQuestion=questionMaker(clear).currentQuestion;
@@ -159,7 +159,7 @@ function answerChecker(userAnswer, currentState){
         var win = updateStats(statTracker);
         if(win){
                 newState.question= "";
-                newState.choices= ["Click for extra practice \n You can earn more points, but not more bucks."];
+                newState.choices= ["Press for extra practice."];
                 newState.prompt= "Congratulations! You Win!";
                 newState.answer= null;
                 newState._id= null;
