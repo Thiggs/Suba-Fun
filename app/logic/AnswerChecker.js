@@ -46,7 +46,7 @@ function answerChecker(userAnswer, currentState){
 //if store was selected
        else if(currentState.question==="Select a game"){
           var newPrompt="";
-          var newChoices=["Upgrade Worker Achievement: \n 25 points", "Upgrade Thinker Achievement: \n 25 bucks"];
+          var newChoices=["Upgrade Worker Achievement: \n 50 points", "Upgrade Thinker Achievement: \n 5 bucks"];
 
            if (worker==="#000000"){
                newPrompt+=" You have purchased all the Worker Achievements! ";
@@ -68,9 +68,9 @@ function answerChecker(userAnswer, currentState){
         //if item from store was selected
         else if(currentState.question==="Select an upgrade"){
             gameSelector ("menu");
-            if(userAnswer==="Upgrade Worker Achievement: \n 25 points"){
-                if (totalPoints>=25){
-                statTracker.points = -25;
+            if(userAnswer==="Upgrade Worker Achievement: \n 50 points"){
+                if (totalPoints>=50){
+                statTracker.points = -50;
                 statTracker.worker=true;
                 newState.question="Select a game";
                 newState.answer="";
@@ -82,10 +82,10 @@ function answerChecker(userAnswer, currentState){
                 }
                 else newState.prompt="insufficient funds"
             }
-            else if(userAnswer==="Upgrade Thinker Achievement: \n 25 bucks"){
+            else if(userAnswer==="Upgrade Thinker Achievement: \n 5 bucks"){
                 gameSelector ("menu");
-                if (totalBucks>=25){
-                    statTracker.bucks = -25;
+                if (totalBucks>=5){
+                    statTracker.bucks = -5;
                     statTracker.thinker = true;
                     newState.question="Select a game";
                     newState.answer="";
