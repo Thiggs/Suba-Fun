@@ -26,6 +26,9 @@ export class Hamburger extends React.Component {
                         </TouchableOpacity>
                 ))
                 }
+                            <TouchableOpacity onPress={() => {this.burgerSelector("reset")}} style={styles.choiceButton} key={"reset"}>
+                        <Text>Reset All Games</Text>
+                        </TouchableOpacity>
             </View>
         );
     }

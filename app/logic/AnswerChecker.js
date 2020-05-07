@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Alert } from 'react-native';
 
 import { questionMaker } from './QuestionMaker.js';
-import { updateData, updateStats, gameSelector, totalBucks, totalPoints, worker, thinker } from '../datasets/UserData.js';
+import { updateData, updateStats, gameSelector, totalBucks, totalPoints, worker, thinker, resetGame } from '../datasets/UserData.js';
 
 //////////////////////////////////////////////////////////////////
 //THIS FUNCTION HANDLES ALL LOGIC ONCE A USER SELECTS AN ANSWER
@@ -16,19 +16,33 @@ function answerChecker(userAnswer, currentState){
     var dataUpdater =[];
     var statTracker={};
 
+//if reset all games is selected
+    if(userAnswer==="reset"){
+        statTracker.practice=false;
+        resetGame();
+        var clear = true;
+        var nextQuestion=questionMaker(clear).currentQuestion;
+        newState.question=nextQuestion.problem;
+        newState.answer=nextQuestion.answer;
+        newState.choices=nextQuestion.choiceSet;
+        newState.buck=nextQuestion.buck;
+        newState.type=nextQuestion.type;
+        newState.prompt="";
+    }
+
     //if continue game after win is selected
-   if(userAnswer==="Press for extra practice."){
+   else if(userAnswer==="Press for extra practice."){
        statTracker.practice=true;
        var clear = true;
        var nextQuestion=questionMaker(clear).currentQuestion;
-       newState.question=nextQuestion.problem;
-       newState.answer=nextQuestion.answer;
-       newState.choices=nextQuestion.choiceSet;
-       newState._id=nextQuestion._id;
-       newState.buck=nextQuestion.buck;
-       newState.type=nextQuestion.type;
-       newState.prompt="";
-   }
+            newState.question=nextQuestion.problem;
+            newState.answer=nextQuestion.answer;
+            newState.choices=nextQuestion.choiceSet;
+            newState._id=nextQuestion._id;
+            newState.buck=nextQuestion.buck;
+            newState.type=nextQuestion.type;
+            newState.prompt="";
+    }
 
     //if game was selected
     else if(currentState.question==="Select a game"&&userAnswer!=="store"){
