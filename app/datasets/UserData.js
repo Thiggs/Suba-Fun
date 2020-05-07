@@ -37,21 +37,16 @@ var thinker="#ffffff";
 var achievementColors=["#ffffff", "#b08d57", '#C0C0C0', '#FFDF00', '#000000' ];
 
 //retrieve saved game data (if any)
-async () => {
-    try {
-      const value = await AsyncStorage.getItem('allData');
-      console.log(value);
-      if (value !== null) {
-          allData=JSON.parse(value)
-          totalPoints=allData._totalPoints;
-          totalBucks=allData._totalBucks;
-          dataStore=allData._dataStore;
-          worker = allData._worker;
-          thinker = allData._thinker;
-      }
-    } catch (error) {
-    }
-  };
+AsyncStorage.getItem('allData').then(value =>{
+        var allData=JSON.parse(value);
+        if (allData._dataStore){
+        totalPoints=parseInt(allData._totalPoints);
+        totalBucks=parseInt(allData._totalBucks);
+        dataStore=allData._dataStore;
+        worker = allData._worker;
+        thinker = allData._thinker;
+};
+});
 
 /////////////////////////////////
 //CURRENT GAME DATA
@@ -88,7 +83,7 @@ function gameSelector (selectedGame){
 
     if(game !== ("menu" || "store")){
         dataStore[game]=UserData;
-        _storeData;
+        _storeData();
     }
 
     gameList.forEach((d, i)=>{if (d===selectedGame){
@@ -122,7 +117,6 @@ function updateData (dataToUpdate){
     for (var property in dataToUpdate[0]){
         UserData[objIndex][property]=dataToUpdate[0][property];
     }
-    _storeData();
 }
 
 //update total points, bucks, and game progress
@@ -162,17 +156,18 @@ function updateStats(statsToUpdate){
 }
 
 //function to save the game
-const _storeData = async () => {
-    var allData={};
-    allData._totalPoints=totalPoints;
-    allData._totalBucks=totalBucks;
-    allData._dataStore=dataStore;
-    allData._worker=worker;
-    allData._thinker=thinker;
+async function _storeData(){
+    var allData=[{}];
+    allData[0]._totalPoints=totalPoints.toString();
+    allData[0]._totalBucks=totalBucks.toString();
+    allData[0]._dataStore=dataStore;
+    allData[0]._worker=worker;
+    allData[0]._thinker=thinker;
+    allData=JSON.stringify(allData)
     try {
       await AsyncStorage.setItem(
         'allData',
-        JSON.stringify(allData)
+        allData
       );
     } catch (error) {
     }
@@ -193,6 +188,7 @@ const _storeData = async () => {
         {problem: "Select a game" ,answer: "FiveFrame", type: "known" }
     ];
     var notKnownTotal=4;
+    _storeData();
     return; 
   }
 
