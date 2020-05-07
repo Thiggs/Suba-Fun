@@ -122,7 +122,7 @@ function updateData (dataToUpdate){
     for (var property in dataToUpdate[0]){
         UserData[objIndex][property]=dataToUpdate[0][property];
     }
-
+    _storeData();
 }
 
 //update total points, bucks, and game progress
@@ -163,7 +163,7 @@ function updateStats(statsToUpdate){
 
 //function to save the game
 const _storeData = async () => {
-    var allData;
+    var allData={};
     allData._totalPoints=totalPoints;
     allData._totalBucks=totalBucks;
     allData._dataStore=dataStore;
