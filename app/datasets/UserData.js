@@ -36,17 +36,7 @@ var thinker="#ffffff";
 //all color codes....bronze, silver, gold, platinum
 var achievementColors=["#ffffff", "#b08d57", '#C0C0C0', '#FFDF00', '#000000' ];
 
-//retrieve saved game data (if any)
-AsyncStorage.getItem('allData').then(value =>{
-        var allData=JSON.parse(value);
-        if (allData._dataStore){
-        totalPoints=parseInt(allData._totalPoints);
-        totalBucks=parseInt(allData._totalBucks);
-        dataStore=allData._dataStore;
-        worker = allData._worker;
-        thinker = allData._thinker;
-};
-});
+
 
 /////////////////////////////////
 //CURRENT GAME DATA
@@ -83,7 +73,6 @@ function gameSelector (selectedGame){
 
     if(game !== ("menu" || "store")){
         dataStore[game]=UserData;
-        _storeData();
     }
 
     gameList.forEach((d, i)=>{if (d===selectedGame){
@@ -155,24 +144,6 @@ function updateStats(statsToUpdate){
     }
 }
 
-//function to save the game
-async function _storeData(){
-    var allData=[{}];
-    allData[0]._totalPoints=totalPoints.toString();
-    allData[0]._totalBucks=totalBucks.toString();
-    allData[0]._dataStore=dataStore;
-    allData[0]._worker=worker;
-    allData[0]._thinker=thinker;
-    allData=JSON.stringify(allData)
-    try {
-      await AsyncStorage.setItem(
-        'allData',
-        allData
-      );
-    } catch (error) {
-    }
-  };
-
   //reset game
   function resetGame(){
     totalPoints=0;
@@ -188,9 +159,8 @@ async function _storeData(){
         {problem: "Select a game" ,answer: "FiveFrame", type: "known" }
     ];
     var notKnownTotal=4;
-    _storeData();
-    return; 
-  }
+    return;
+}
 
 //////////////////////////////////////////////////////////////////
 //EXPORT VARIABLES AND FUNCTIONS FOR USE ELSEWHERE IN APP
