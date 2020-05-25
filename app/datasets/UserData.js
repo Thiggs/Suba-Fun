@@ -148,7 +148,7 @@ function updateStats(statsToUpdate){
   function resetGame(){
     totalPoints=0;
     totalBucks=0;
-    dataStore;
+    dataStore={};
     worker="#ffffff";
     thinker="#ffffff";
     game = "menu";
