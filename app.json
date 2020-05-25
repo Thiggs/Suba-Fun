@@ -7,7 +7,7 @@
       "android",
       "web"
     ],
-    "version": "1.1.2",
+    "version": "1.1.3",
     "description": "An educational app that uses scaffolding strategies to teach early numeracy skills. Spanish vocabulary and Klingon Vocabulary are included to show proof of concept of applying the same strategies to a diverse set of skills.\n\nFeatures:\nSubitizing (1-9)\nFive Frames (0-5)\nSpanish Words (~1,700)\nKlingon Nouns (~170)",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -26,11 +26,11 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.thiggs.SubaFun",
-      "buildNumber": "1.1.2"
+      "buildNumber": "1.1.3"
     },
     "android": {
       "package": "com.thiggs.SubaFun",
-      "versionCode": 4,
+      "versionCode": 5,
       "permissions": []
     },
     "githubUrl": "https://github.com/Thiggs/Suba-Fun"
